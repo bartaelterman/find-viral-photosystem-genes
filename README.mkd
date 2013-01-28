@@ -27,6 +27,10 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 - README file: this file
 - notes: notes taken while developing this project
 
+### What is not in this repository?
+
+- data
+
 ### Get the code
 
 `git clone thisrepo`
