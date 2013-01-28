@@ -1,0 +1,11 @@
+# Notes
+
+Personal notes taken while developing this project. Notes are organized latest-first.
+
+## 2013-01-28
+
+- Repository initialized.
+- README.mkd created
+- notes.mkd created
+- data/ directory created. Two testfiles added: `GOS_testassembly.fas` and `photosynthesis_genes.fas`. Both containing one sequence of random A, C, T, G characters.
+- scripts/ directory created. Nothing in there yet.
