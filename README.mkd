@@ -21,6 +21,12 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 - Python (I use 2.7)
 - Probably more as this project starts to evolve.
 
+### What is in this repository?
+
+- scripts/ : directory containing code
+- README file: this file
+- notes: notes taken while developing this project
+
 ### Get the code
 
 `git clone thisrepo`
