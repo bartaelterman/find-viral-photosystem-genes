@@ -1,0 +1,38 @@
+# Photosystem genes in cyanophages
+
+## Background
+
+This project was based on the results published in the following article: [Photosystem I gene cassettes are present in marine virus genomes][0] by Sharon et al. The authors identified a number of photosystem I genes in marine virus genomes by performing a tBLASTx search for photosynthesis genes in the contigs of the [Global Ocean Sampling project][1].
+
+## Data
+
+The analysis performed in the article was done on publicly available data from the [Global Ocean Sampling project][1]. The sequences used were contigs, so the assembly was already done by the GOS researchers. The data can be downloaded from the [CAMERA portal][2]. You can obviously use your own data if you like.
+
+## Goal
+
+Here we will try to reproduce the results from the published article.
+
+## Run the analysis
+
+If you want to run the analysis yourself, on the same or on your own data, you can clone this repository.
+
+### Dependencies
+
+- Python (I use 2.7)
+- Probably more as this project starts to evolve.
+
+### Get the code
+
+`git clone thisrepo`
+
+### Run the analysis
+
+There is currently nothing to run.
+
+## Contribute
+
+Please feel free to contribute to this project. You can track my progress and you can fork this repository or propose changes if you like.
+
+[0](link to paper)
+[1](link to GOS project page)
+[2](link to CAMERA portal)
