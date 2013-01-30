@@ -4,3 +4,5 @@ data/ntinput.nsq: data/input.fasta
 
 clean:
 	rm data/ntinput.n*
+
+all: data/ntinput.nsq
