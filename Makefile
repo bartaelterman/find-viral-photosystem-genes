@@ -1,4 +1,3 @@
-data/blastdb: data
-	/usr/local/ncbi/blast/bin/makeblastdb -in data/psaA.fasta -input_type fasta -dbtype nucl -out ntpsaA
-	mv ./ntpsaA.n* data/
-	touch data/blastdb
+data/ntinput.nsq: data/input.fasta
+	/usr/local/ncbi/blast/bin/makeblastdb -in data/input.fasta -input_type fasta -dbtype nucl -out ntinput
+	mv ./ntinput.n* data/
