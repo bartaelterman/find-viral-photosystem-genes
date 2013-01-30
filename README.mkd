@@ -26,6 +26,7 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 - scripts/ : directory containing code
 - README file: this file
 - notes: notes taken while developing this project
+- Makefile: contains all commands needed to run this analysis. To run all commands, do `make all`.
 
 ### What is not in this repository?
 
@@ -37,7 +38,7 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 
 ### Run the analysis
 
-There is currently nothing to run.
+`make all`
 
 ## Contribute
 
