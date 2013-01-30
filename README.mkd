@@ -19,7 +19,7 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 ### Dependencies
 
 - Python (I use 2.7)
-- Probably more as this project starts to evolve.
+- A local version of the NCBI BLAST+ tools with the executables in your local PATH variable
 
 ### What is in this repository?
 
