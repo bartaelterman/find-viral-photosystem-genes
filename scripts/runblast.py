@@ -13,10 +13,12 @@ program, infas, blastdb, outfile = sys.argv[1:5]
 print "starting program at: ", datetime.datetime.now()
 if program == "blastn":
     from Bio.Blast.Applications import NcbiblastnCommandline
-    blast_cline = NcbiblastnCommandline(query=infas, db=blastdb, evalue="0.001", outfmt=5, out=outfile)
+	e_value = 0.001
+    blast_cline = NcbiblastnCommandline(query=infas, db=blastdb, evalue=e_value, outfmt=5, out=outfile)
 elif program == "tblastx":
     from Bio.Blast.Applications import NcbitblastxCommandline
-    blast_cline = NcbitblastxCommandline(query=infas, db=blastdb, evalue="0.001", outfmt=5, out=outfile)
+	e_value = 10 ** -20
+    blast_cline = NcbitblastxCommandline(query=infas, db=blastdb, evalue=e_value, outfmt=5, out=outfile)
 else:
     print "unknown program given: ", program
     print "should be 'blastn' or 'tblastx'"
