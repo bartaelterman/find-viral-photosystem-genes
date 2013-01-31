@@ -2,6 +2,12 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-01-30
+
+- BLAST installed locally
+- Added code to create a blastable database from the input file
+- Decided to name the input file `input.fasta`. This way, if you want to run this code on your own data, you can just rename your input file `input.fasta` or create a simlink with this name
+
 ## 2013-01-28
 
 - Repository initialized.
