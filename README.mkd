@@ -44,6 +44,6 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 
 Please feel free to contribute to this project. You can track my progress and you can fork this repository or propose changes if you like.
 
-[0](link to paper)
-[1](link to GOS project page)
-[2](link to CAMERA portal)
+[0](http://www.nature.com/nature/journal/v461/n7261/abs/nature08284.html)
+[1](http://www.jcvi.org/cms/research/projects/gos/overview/)
+[2](http://camera.calit2.net/)
