@@ -2,6 +2,11 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-02-07
+
+- Creating a blastable database from the GOS dataset. This took less then 1 hour.
+- Trying to do a first test search with the psaA gene on the GOS dataset. No luck however, it seems that the GOS blast database is missing its header file. I probably accidentally deleted it while moving files.
+
 ## 2013-01-30
 
 - BLAST installed locally
