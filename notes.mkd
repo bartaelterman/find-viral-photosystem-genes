@@ -4,6 +4,12 @@ Personal notes taken while developing this project. Notes are organized latest-f
 
 ## 2013-02-08
 
+- Update: the query sequence I used was not really a psaA gene. I found a new sequence on the EBI website and added it to the `photosynthesis_genes.fas` file.
+- Redo BLAST but use tblastx instead of blastn.
+- Result: 500 hits!
+
+## 2013-02-08
+
 - Wrote `blasthits_statistics` to count the number of blast hits found. Turns out to be 23. This is much less then the 574 assemblies found in the paper, but I only used psaA as query and I used blastn, not tblastx.
 - Next steps:
 	- perform similarity search with tblastx
