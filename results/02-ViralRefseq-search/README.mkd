@@ -1,0 +1,7 @@
+# Search for viral sequences
+
+The original paper describes the initial identification of viral sequences by performing a tblastx search of the refseq viral dataset on the GOS contigs.
+
+In this directory, the refseq viral dataset resides in the data/ folder (which is a simlink to the data/viralGenomes.fas file in the root data/ folder of this project). As the viralGenomes.fas file is actually too large to use as query for tblastx on my machines, I'll fetch only Cyanophage genomes from the dataset and use these. (Others may not want to perform this filtering step but run this similarity search with all viral genomes instead)
+
+
