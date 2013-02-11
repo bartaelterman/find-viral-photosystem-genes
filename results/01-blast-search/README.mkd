@@ -1,0 +1,4 @@
+# Perform BLAST search
+
+Perform a BLAST search with the photosynthesis genes (query) on the GOS blastable database.
+
