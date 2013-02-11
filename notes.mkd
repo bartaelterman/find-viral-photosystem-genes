@@ -2,6 +2,14 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-02-11
+
+- I want to filter the `ViralGenomes.fas` file. It is too big to use as query for tblastx. I am considering to use only Cyanophages, as the paper states the following:
+
+	Analysis of the GOS clones containing the modified psaA genes confirmed their viral origin (probably cyanophages from the Myoviridae familiy)
+
+- However, in order to be able to do so, I will need to dive into some viral taxonomy first as I currently don't know why the `ViralGenomes.fas` file contains `Cyanophage genomes` but also `Prochlorococcus` and `Synechococcus phage genomes`. I would guess those last two are also Cyanophages.
+
 ## 2013-02-10
 
 - data/viralGenomes.fas added. These data were downloaded from NCBI's ftp site. The original filename is `viral.1.1.genomic.fna`.
