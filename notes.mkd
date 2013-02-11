@@ -2,6 +2,10 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-02-10
+
+- data/viralGenomes.fas added. These data were downloaded from NCBI's ftp site. The original filename is `viral.1.1.genomic.fna`.
+
 ## 2013-02-08
 
 - Update: the query sequence I used was not really a psaA gene. I found a new sequence on the EBI website and added it to the `photosynthesis_genes.fas` file.
