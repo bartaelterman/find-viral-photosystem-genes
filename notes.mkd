@@ -2,6 +2,10 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-02-24
+
+- Diving into taxonomy resulted in no big surprises: indeed `Prochlorococcus` and `Synechococcus` phage genomes are both Cyanophages. So I want to fetch all sequences from the `ViralGenomes.fas` file matching `Prochlorococcus`, `Synechococcus` or `Cyanophage`. The resulting list might nog be complete, but it should do as a test. In order to do so, a new directory was created in the `results` directory: `02-ViralRefseq-search`. The scripts, currently in development, reside in a scripts folder in that directory.
+
 ## 2013-02-11
 
 - I want to filter the `ViralGenomes.fas` file. It is too big to use as query for tblastx. I am considering to use only Cyanophages, as the paper states the following:
