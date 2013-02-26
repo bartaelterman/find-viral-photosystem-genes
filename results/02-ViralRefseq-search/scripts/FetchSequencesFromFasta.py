@@ -8,6 +8,6 @@ class SequenceFetcher():
     def fetchWithIDMatch(self, pattern):
         matchingSequences = []
 	for record in self.records:
-	    if re.search(pattern, record.id):
+	    if re.search(pattern, record.description):
 		matchingSequences.append(record)
         return matchingSequences

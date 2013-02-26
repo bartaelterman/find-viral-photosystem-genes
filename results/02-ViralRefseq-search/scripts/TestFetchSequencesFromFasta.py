@@ -13,8 +13,10 @@ class TestFetchSequences(unittest.TestCase):
 	self.sequenceFetcher.readSequences(self.fastafile)
 	print "fixture ran"
 
+    """
     def tearDown(self):
 	os.remove(self.fastafile)
+    """
 
     def test_fetchNoSequences(self):
 	pattern = r"unknown"
@@ -25,20 +27,20 @@ class TestFetchSequences(unittest.TestCase):
 	pattern = r"sequence1"
 	sequences = self.sequenceFetcher.fetchWithIDMatch(pattern)
 	self.assertEqual(len(sequences), 1)
-	self.assertEqual(sequences[0].id, "sequence1")
+	self.assertEqual(sequences[0].description, "sequence1")
         
     def test_fetchSeq1and2(self):
 	pattern = r"1|2"
 	sequences = self.sequenceFetcher.fetchWithIDMatch(pattern)
 	self.assertEqual(len(sequences), 2)
-	self.assertEqual(sequences[0].id, "sequence1")
-	self.assertEqual(sequences[1].id, "sequence2")
+	self.assertEqual(sequences[0].description, "sequence1")
+	self.assertEqual(sequences[1].description, "sequence2")
         
     def test_matchAll(self):
         pattern = r"\d"
 	sequences = self.sequenceFetcher.fetchWithIDMatch(pattern)
 	self.assertEqual(len(sequences), 4)
-	self.assertEqual(sequences[0].id, "sequence1")
-	self.assertEqual(sequences[1].id, "sequence2")
-	self.assertEqual(sequences[2].id, "sequence3")
-	self.assertEqual(sequences[3].id, "sequence4")
+	self.assertEqual(sequences[0].description, "sequence1")
+	self.assertEqual(sequences[1].description, "sequence2")
+	self.assertEqual(sequences[2].description, "sequence3")
+	self.assertEqual(sequences[3].description, "sequence4")
