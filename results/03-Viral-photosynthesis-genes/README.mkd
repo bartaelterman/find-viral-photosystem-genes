@@ -1,0 +1,3 @@
+# Find photosynthesis genes in viral genomes
+
+The root directory contains both `viralGenomes.fas` and `photosynthesis_genes.fas`. Regardless of the GOS data, the genes in `photosynthesis_genes.fas` should match a couple of viral genomes in `viralGenomes.fas`. We will test this in this directory.
