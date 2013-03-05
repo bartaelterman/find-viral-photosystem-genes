@@ -2,6 +2,12 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-05
+
+- Read the article `Three Prochlorococcus Cyanophage genomes: Signature Features and Ecological Interpretations.` They describe the discovery of *PsbA* and *hli* in these three Prochlorococcus Cyanophages.
+- Started a new subproject in the `results` directory: `03-Viral-photosynthesis-genes` in which I will try to map photosynthesis genes on viral genomes (so this has nothing to do with the GOS dataset anymore). Still need to find the genomic sequence of *psbA* and *hli* though.
+- Found out about BLAST's `num_threads` parameter and implemented it right away in the `runblast.py` script. I hardcoded it and made it use 3 threads. The documentation on [this](https://wiki.hpcc.msu.edu/display/Bioinfo/BLAST+with+Multiple+Processors) site describes that you have to include the main thread. So if you want to have 2 worker threads, you specify `num_threads=3`.
+
 ## 2013-02-26
 
 - Wrapper script written to fetch cyanophage genomes from `ViralGenomes.fas`.
