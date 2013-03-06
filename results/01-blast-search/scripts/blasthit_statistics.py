@@ -12,20 +12,25 @@ def parseArguments():
 def getHitTitlesAndAlignments(blastrecords):
     hittitles = []
     alignments = []
+    hsps_counter = 0
     for rec in blastrecords:
 	for alignment in rec.alignments:
+	    hsps = alignment.hsps
 	    alignments.append(alignment)
 	    alignment_title = alignment.title
 	    if not alignment_title in hittitles:
 		hittitles.append(alignment_title)
-    return [hittitles, alignments]
+	    for hsp in hsps:
+		hsps_counter += 1
+    return [hittitles, alignments, hsps_counter]
 
 def main():
     infile = parseArguments()
     resulthandle = open(infile)
     blastrecords = NCBIXML.parse(resulthandle)
-    allHitTitles, allAlignments = getHitTitlesAndAlignments(blastrecords)
+    allHitTitles, allAlignments, hsps_counter = getHitTitlesAndAlignments(blastrecords)
     print "Number of hits: ", len(allAlignments)
     print "Number of hit sequences: ", len(allHitTitles)
+    print "Number of hsps: ", hsps_counter
 
 main()
