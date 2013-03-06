@@ -1,2 +1,7 @@
 *.xls
 *.pdf
+*.pyc
+*.nsq
+*.nhr
+*.nin
+*.nal
