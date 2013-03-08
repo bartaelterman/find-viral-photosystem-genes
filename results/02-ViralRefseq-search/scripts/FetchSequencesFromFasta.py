@@ -3,11 +3,11 @@ import re
 
 class SequenceFetcher():
     def readSequences(self, infilename):
-        self.records = list(SeqIO.parse(infilename, "fasta"))
+	self.fasta = SeqIO.FastaIO.FastaIterator(file(infilename))
 
     def fetchWithIDMatch(self, pattern):
         matchingSequences = []
-	for record in self.records:
+	for record in self.fasta:
 	    if re.search(pattern, record.description):
 		matchingSequences.append(record)
         return matchingSequences
