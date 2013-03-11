@@ -2,6 +2,12 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-11
+
+- Wrote a script to fetch the GOS assemblies that contain photosynthesis genes. This script reads the BLAST output and parses it and subsequently, fetches the GOS assembly sequences based on the hit-description. The script is `results/01-blast-search/scripts/fetchBlastHitSequences.py`.
+- Running `blasthit_statistics.py` showed that there are 500 hits in the tBLASTx output (which was generated with only the psaA gene in `photosynthesis_genes.fas`; the fact that that is not clear by itself should be solved somehow) and 100001 alignments. Especially 500 seems like a number that is too round to be real. Could this be a default cutoff by BLAST? I should check this and redo the run.
+- Added the psbA gene sequence to `photosynthesis_genes.fas` but haven't done the analysis again. I also discovered that it is pretty silly to redo the entire analysis if you add one gene to `photosynthesis_genes.fas`. You shouldn't redo the BLAST searches for the genes that were already in there. If I want to get to that point, I'd better reorganise the data and makefiles.
+
 ## 2013-03-05
 
 - Read the article `Three Prochlorococcus Cyanophage genomes: Signature Features and Ecological Interpretations.` They describe the discovery of *PsbA* and *hli* in these three Prochlorococcus Cyanophages.
