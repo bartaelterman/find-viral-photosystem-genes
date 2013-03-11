@@ -20,6 +20,7 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 
 - Python (I use 2.7)
 - A local version of the NCBI BLAST+ tools with the executables in your local PATH variable
+- gnu make
 
 ### What is in this repository?
 
@@ -40,6 +41,8 @@ If you want to run the analysis yourself, on the same or on your own data, you c
 ### Run the analysis
 
 `make all`
+
+View the Makefile for more documentation.
 
 ## Contribute
 
