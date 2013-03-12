@@ -2,6 +2,11 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-12
+
+- Indeed, 500 hits, that is a default BLAST cutoff. Not sure whether it would be wise to increase this value, as I have no idea how high I should set this value. Either way, that probably explains why I was able to do this search on my laptop.
+- Reorganized the data: added a folder `data/photosynthesis_genes` which includes the fasta sequences of the photosynthesis genes separately. By also modifying the `Makefile`, this makes it possible to redo the analysis only for photosynthesis genes that haven't been analyzed before.
+
 ## 2013-03-11
 
 - Wrote a script to fetch the GOS assemblies that contain photosynthesis genes. This script reads the BLAST output and parses it and subsequently, fetches the GOS assembly sequences based on the hit-description. The script is `results/01-blast-search/scripts/fetchBlastHitSequences.py`.
