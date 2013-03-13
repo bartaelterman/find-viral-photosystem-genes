@@ -18,14 +18,15 @@
 # ===================================
 
 
-data/ntinput.00.nsq: data/input.fasta
+data/blastdb_created: data/input.fasta
 	makeblastdb -in data/input.fasta -input_type fasta -dbtype nucl -out ntinput
 	mv ./ntinput* data/
+	touch data/blastdb_created
 
-results/01-blast-search/output/psaA_in_GOS_tblastx.xml: data/ntinput.00.nsq
+results/01-blast-search/output/psaA_in_GOS_tblastx.xml: data/blastdb_created
 	./results/01-blast-search/scripts/runblast.py tblastx data/photosynthesis_genes/psaA.fasta data/ntinput results/01-blast-search/output/psaA_in_GOS_tblastx.xml
 
-results/01-blast-search/output/psbA_in_GOS_tblastx.xml: data/ntinput.00.nsq
+results/01-blast-search/output/psbA_in_GOS_tblastx.xml: data/blastdb_created
 	./results/01-blast-search/scripts/runblast.py tblastx data/photosynthesis_genes/psbA.fasta data/ntinput results/01-blast-search/output/psbA_in_GOS_tblastx.xml
 
 results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas: results/01-blast-search/output/psaA_in_GOS_tblastx.xml results/01-blast-search/output/psbA_in_GOS_tblastx.xml
@@ -33,7 +34,7 @@ results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas: result
 	./results/01-blast-search/scripts/fetchBlastHitSequences.py ./results/01-blast-search/output/psbA_in_GOS_tblastx.xml ./data/input.fasta ./results/01-blast-search/output/GOS_assemblies_containing_psbA.fas
 	cat ./results/01-blast-search/output/GOS_assemblies_containing_psaA.fas ./results/01-blast-search/output/GOS_assemblies_containing_psbA.fas > ./results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
 
-test/out.xml: data/ntinput.00.nsq
+test/out.xml: data/blastdb_created
 	./results/01-blast-search/scripts/runblast.py blastn data/psaA.fasta data/ntinput test/out.xml
 
 clean:
