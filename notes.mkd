@@ -2,6 +2,13 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-13
+
+- For the sake of feasibility, I'm going to filter the GOS data. I'll only use sequences coming from station GS037 as these should contain some viral sequences containing photosystem I genes (described by Sharon et al. in figure 2). So replicating that finding alone would already be satisfying.
+- Filtering GOS data worked.
+- running `make all`. Had to do some bugfixing here and there to make the entire pipeline run and find some blast hits.
+- Can't seem to find the clone ids mentioned in figure 2 of the paper. Hope this won't hurt.
+
 ## 2013-03-12
 
 - Indeed, 500 hits, that is a default BLAST cutoff. Not sure whether it would be wise to increase this value, as I have no idea how high I should set this value. Either way, that probably explains why I was able to do this search on my laptop.
