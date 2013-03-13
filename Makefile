@@ -40,4 +40,4 @@ clean:
 	rm data/ntinput.*
 	rm results/01-blast-search/output/*
 
-all: data/ntinput.00.nsq
+all: results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
