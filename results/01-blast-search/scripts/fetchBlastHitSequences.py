@@ -34,7 +34,7 @@ def cleanDefs(hitdefs):
 
 def createAndSearchPattern(patterns, seq_fetcher):
     pattern = "|".join(patterns)
-    print "search for pattern: ", big_pattern
+    print "search for pattern: ", pattern
     return seq_fetcher.fetchWithIDMatch(pattern)
 
 def getAllhitSequences(seqfile, patterns):
