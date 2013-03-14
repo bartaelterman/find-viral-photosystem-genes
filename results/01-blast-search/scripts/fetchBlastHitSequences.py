@@ -28,8 +28,10 @@ def getBlastHitDefinitions(hitsfile):
 def cleanDefs(hitdefs):
     outdefs = []
     for hitdef in hitdefs:
-	new_def = hitdef.replace("|", "\\|")
-	outdefs.append(new_def)
+	chars = ["|", ".", "+", "-", "?", "*"]
+	for char in chars:
+	    hitdef = hitdef.replace(char, "\\" + char)
+	outdefs.append(hitdef)
     return outdefs
 
 def createAndSearchPattern(patterns, seq_fetcher):
