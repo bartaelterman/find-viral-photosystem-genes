@@ -34,11 +34,19 @@ results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas: result
 	./results/01-blast-search/scripts/fetchBlastHitSequences.py ./results/01-blast-search/output/psbA_in_GOS_tblastx.xml ./data/input.fasta ./results/01-blast-search/output/GOS_assemblies_containing_psbA.fas
 	cat ./results/01-blast-search/output/GOS_assemblies_containing_psaA.fas ./results/01-blast-search/output/GOS_assemblies_containing_psbA.fas > ./results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
 
+results/02-ViralRefseq-search/data/viralGenomes.nsq: data/viralGenomes.fas
+	makeblastdb -in data/viralGenomes.fas -input_type fasta -dbtype nucl -out viralGenomes
+	mv ./viralGenomes* results/02-ViralRefseq-search/data/
+
+results/02-ViralRefseq-search/output/GOS_photo_hits_viral.xml: results/02-ViralRefseq-search/data/viralGenomes.nsq results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
+	./results/01-blast-search/scripts/runblast.py tblastx ./results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas ./results/02-ViralRefseq-search/data/viralGenomes results/02-ViralRefseq-search/output/GOS_photo_hits_viral.xml
+
 test/out.xml: data/blastdb_created
 	./results/01-blast-search/scripts/runblast.py blastn data/psaA.fasta data/ntinput test/out.xml
 
 clean:
 	rm data/ntinput.*
 	rm results/01-blast-search/output/*
+	rm results/02-ViralRefseq-search/data/ViralGenomes.n
 
 all: results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
