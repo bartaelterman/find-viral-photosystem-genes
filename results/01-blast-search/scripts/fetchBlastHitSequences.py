@@ -10,8 +10,8 @@ sys.path.append(project_root + "/results/02-ViralRefseq-search/scripts/")
 import FetchSequencesFromFasta
 
 def checkarguments():
-    if len(sys.argv) != 4:
-	print "usage: ./fetchBlastHitSequences.py <blasthitsfile> <hitsequencesfile> <outfile>"
+    if len(sys.argv) != 5:
+	print "usage: ./fetchBlastHitSequences.py <hit/query> <blasthitsfile> <hitsequencesfile> <outfile>"
 	sys.exit(-1)
 
 def getBlastHitDefinitions(hitsfile):
@@ -23,6 +23,15 @@ def getBlastHitDefinitions(hitsfile):
 	    definition = alignment.hit_def
 	    if definition not in definitions:
 		definitions.append(definition)
+    return definitions
+
+def getBlastQueryDefinitions(hitsfile):
+    blast_records = NCBIXML.parse(file(hitsfile))
+    definitions = []
+    for record in blast_records:
+	definition = record.query
+	if definition not in definitions:
+	    definitions.append(definition)
     return definitions
 
 def cleanDefs(hitdefs):
@@ -63,10 +72,13 @@ def writeToOutfile(hitseqs, outfilename):
 
 def main():
     checkarguments()
-    blasthitsfile, hitsequencesfile, outfilename  = sys.argv[1:]
-    hitdefs = getBlastHitDefinitions(blasthitsfile)
-    clean_hitdefs = cleanDefs(hitdefs)
-    hitsequences = getAllhitSequences(hitsequencesfile, clean_hitdefs)
+    subject, blasthitsfile, hitsequencesfile, outfilename  = sys.argv[1:]
+    if subject == "hits":
+	defs = getBlastHitDefinitions(blasthitsfile)
+    else:
+	defs = getBlastQueryDefinitions(blasthitsfile)
+    clean_defs = cleanDefs(defs)
+    sequences = getAllhitSequences(hitsequencesfile, clean_hitdefs)
     writeToOutfile(hitsequences, outfilename)
 
 main()
