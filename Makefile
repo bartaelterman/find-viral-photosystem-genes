@@ -55,7 +55,11 @@ test/out.xml: data/blastdb_created
 
 clean:
 	rm data/ntinput.*
-	rm results/01-blast-search/output/*
-	rm results/02-ViralRefseq-search/data/ViralGenomes.n
+	rm results/01-blast-search/output/psaA_in_GOS_tblastx.xml
+	rm results/01-blast-search/output/psbA_in_GOS_tblastx.xml
+	rm results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
+	rm results/02-ViralRefseq-search/data/viralGenomes.n*
+	rm results/02-ViralRefseq-search/output/GOS_photo_hits_viral.xml
+	rm results/02-ViralRefseq-search/output/GOS_photo_and_viral.fas
 
 all: results/02-ViralRefseq-search/output/GOS_photo_and_viral.fas
