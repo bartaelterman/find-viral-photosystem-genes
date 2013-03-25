@@ -78,7 +78,7 @@ def main():
     else:
 	defs = getBlastQueryDefinitions(blasthitsfile)
     clean_defs = cleanDefs(defs)
-    sequences = getAllhitSequences(hitsequencesfile, clean_hitdefs)
-    writeToOutfile(hitsequences, outfilename)
+    sequences = getAllhitSequences(hitsequencesfile, clean_defs)
+    writeToOutfile(sequences, outfilename)
 
 main()
