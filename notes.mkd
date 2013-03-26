@@ -2,6 +2,14 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-26
+
+- I am able to find GOS assemblies that have both hits on photosynthesis genes and on viral genomes.
+- In the paper though, psbA was not used as query. (This one is also not the core subject of the paper as it is a PS-II gene of which the presence in viral genomes has been demonstrated before)
+- I am at this point unable to say which viral genes I detected. It might be better to build a collection of viral genes instead of using the entire viral genomes.
+- Looking back at the paper, I'll be unable to find a single clone in the GS037 sample containing both a viral gene and psaA. The only assembly containing a viral gene (nrdB) contains psaC, not psaA. I should retry this with GS047 or GS034.
+- I'll need to look for a way to visualize stuff or anyway find out which blast hits occured in each others vicinity.
+
 ## 2013-03-13
 
 - For the sake of feasibility, I'm going to filter the GOS data. I'll only use sequences coming from station GS037 as these should contain some viral sequences containing photosystem I genes (described by Sharon et al. in figure 2). So replicating that finding alone would already be satisfying.
