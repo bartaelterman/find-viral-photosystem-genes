@@ -73,10 +73,13 @@ def writeToOutfile(hitseqs, outfilename):
 def main():
     checkarguments()
     subject, blasthitsfile, hitsequencesfile, outfilename  = sys.argv[1:]
-    if subject == "hits":
+    if subject == "hit":
 	defs = getBlastHitDefinitions(blasthitsfile)
-    else:
+    elif subject == "query":
 	defs = getBlastQueryDefinitions(blasthitsfile)
+    else:
+	print "Unknown subject: {0}\nShould be hit or query".format(subject)
+	sys.exit(-1)
     clean_defs = cleanDefs(defs)
     sequences = getAllhitSequences(hitsequencesfile, clean_defs)
     writeToOutfile(sequences, outfilename)
