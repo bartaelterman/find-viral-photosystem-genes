@@ -55,6 +55,7 @@ test/out.xml: data/blastdb_created
 
 clean:
 	rm data/ntinput.*
+	rm data/blastdb_created
 	rm results/01-blast-search/output/psaA_in_GOS_tblastx.xml
 	rm results/01-blast-search/output/psbA_in_GOS_tblastx.xml
 	rm results/01-blast-search/output/GOS_assemblies_containing_photo_genes.fas
