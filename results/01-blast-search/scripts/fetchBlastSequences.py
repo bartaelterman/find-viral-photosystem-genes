@@ -37,7 +37,7 @@ def getBlastQueryDefinitions(hitsfile):
 def cleanDefs(hitdefs):
     outdefs = []
     for hitdef in hitdefs:
-	chars = ["|", ".", "+", "-", "?", "*"]
+	chars = ["|", ".", "+", "-", "?", "*", "(", ")", "\""]
 	for char in chars:
 	    hitdef = hitdef.replace(char, "\\" + char)
 	outdefs.append(hitdef)
