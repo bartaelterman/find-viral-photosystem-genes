@@ -2,6 +2,11 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-03-27
+
+- I added a folder `results/04-GS034-only`. I added a Makefile there to fetch only GS034 scaffolds and look for *psaA* and *nrdB*. As described in figure 2 of the paper, this should at least result in 1 scaffold.
+- Yes indeed, one scaffold was found. Should annotate this one and visualize the results in order to be able to properly compare the results with the paper.
+
 ## 2013-03-26
 
 - I am able to find GOS assemblies that have both hits on photosynthesis genes and on viral genomes.
