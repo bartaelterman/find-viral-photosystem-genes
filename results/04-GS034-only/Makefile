@@ -16,13 +16,27 @@
 #	rule: output/GOS_assemblies_containing_psaA.fas
 
 # 5: Create a blastable database containing the GOS assemblies that contain psaA
-#	rule: output/blastdb_2_created
+#	rule: data/blastdb_2_created
 
 # 6: run tBLASTx with nrdB as query on the GOS assemblies that contain psaA
 #	rule: output/GOS_psaA_nrdB_hits.xml
 
 # 7: Fetch GOS assembly sequences that contain both psaA and nrdB
 #	rule: output/GOS_psaA_nrdB_hits.fas
+
+## Annotate sequences
+
+# 8: Create a new blastable database of output/GOS_psaA_nrdB_hits.fas
+#	rule: data/blastdb_3_created
+
+# 9: Create one queryfile with psaA, nrdB, psaC, psaF and psaJ.
+#	rule: output/annotation_queries.fas
+
+# 10: Run BLAST with the queryfile on the latest blastable database.
+#	rule: output/annotation_hits.xml
+
+# 11: Create a tsv file with the best hit per query.
+#	rule: output/annotation_hits.tsv
 
 # ===================================
 
@@ -58,13 +72,37 @@ output/GOS_psaA_nrdB_hits.fas: output/GOS_psaA_nrdB_hits.xml
 	echo -e "Fetching sequences of GS034 assemblies containing both psaA and nrdB....\n-------\n"
 	../01-blast-search/scripts/fetchBlastSequences.py hit output/GOS_psaA_nrdB_hits.xml output/GOS_assemblies_containing_psaA.fas output/GOS_psaA_nrdB_hits.fas
 
+data/blastdb_3_created: output/GOS_psaA_nrdB_hits.fas
+	echo -e "Creating a new blastable database with the GS034 assemblies containing both psaA and nrdB....\n-------\n"
+	makeblastdb -in output/GOS_psaA_nrdB_hits.fas -input_type fasta -dbtype nucl -out GOS_psaA_nrdB
+	mv ./GOS_psaA_nrdB* data/
+	touch data/blastdb_3_created
+
+output/annotation_queries.fas: ../../data/photosynthesis_genes/psaA.fasta ../../data/photosynthesis_genes/psaC.fasta ../../data/photosynthesis_genes/psaF.fasta ../../data/photosynthesis_genes/psaJ.fasta ../../../datasets/ViralGenes/nrdB.fas
+	echo -e "Concatenating all query files....\n-------\n"
+	cat ../../data/photosynthesis_genes/psaA.fasta ../../data/photosynthesis_genes/psaC.fasta ../../data/photosynthesis_genes/psaF.fasta ../../data/photosynthesis_genes/psaJ.fasta ../../../datasets/ViralGenes/nrdB.fas > output/annotation_queries.fas
+
+output/annotation_hits.xml: output/annotation_queries.fas data/blastdb_3_created
+	echo -e "Searching for similarity between psaA and nrdB containing GS034 assemblies and annotation genes....\n-------\n"
+	../01-blast-search/scripts/runblast.py tblastx output/annotation_queries.fas data/GOS_psaA_nrdB output/annotation_hits.xml
+
+output/annotation_hits.tsv: output/annotation_hits.xml
+	echo -e "Creating a tsv file of the hits"
+	../01-blast-search/scripts/parsexmlblast.py output/annotation_hits.xml > output/annotation_hits.tsv
+
+# ===================================
 clean:
-	rm data/GS034.*
+	echo "I will not remove data/GS034.fas as creating it takes a lot of time and is rarely needed"
+	rm data/GS034.n*
 	rm data/blastdb_created
 	rm output/psaA_in_GOS_tblastx.xml
 	rm output/GOS_assemblies_containing_psaA.fas
 	rm data/blastdb_2_created
 	rm output/GOS_psaA_nrdB_hits.xml
 	rm output/GOS_psaA_nrdB_hits.fas
+	rm data/blastdb_3_created
+	rm output/annotation_queries.fas
+	rm output/annotation_hits.xml
+	rm output/annotation_hits.tsv
 
-all: output/GOS_psaA_nrdB_hits.fas
+all: output/annotation_hits.tsv
