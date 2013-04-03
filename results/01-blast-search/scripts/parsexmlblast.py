@@ -2,68 +2,40 @@
 import sys
 from Bio.Blast import NCBIXML
 
-def printBlastResults(outputfile):
-    resultHandle = open(outputfile)
-    blastRecords = NCBIXML.parse(resultHandle)
-    for blastRecord in blastRecords:
-	for description in blastRecord.descriptions:
-	    print blastRecord.descriptions[0].title
-	for alignment in blastRecord.alignments:
-	    for hsp in alignment.hsps:
-		print "sequence: ", alignment.title
-		print "evalue: ", hsp.expect
-		print hsp.query
-		print hsp.match
-		print hsp.sbjct
-		print ""
-
-def parseMetagenomeSeqNumber(queryDefLine):
-    lineElements = queryDefLine.split("|")
-    return lineElements[3]
-
-def parseGIandNameFromDefLine(defLine):
-    lineElements = defLine.split("|")
-    ##print "element1: ", lineElements[1]
-    ##print "element4: ", lineElements[4]
-    return [lineElements[1], lineElements[4]]
-
-def showFirstBlastResult(outputfile):
-    resultHandle = open(outputfile)
-    blastRecords = NCBIXML.parse(resultHandle)
-    blastRecord = blastRecords.next()
-    print "query name: ", blastRecord.query
-    print "sequence number: ", parseMetagenomeSeqNumber(blastRecord.query)
-    print "nr of descriptions: ", len(blastRecord.descriptions)
-    print "nr of alignments: ", len(blastRecord.alignments)
-    print "alignments: "
-    for alignment in blastRecord.alignments:
-	for hsp in alignment.hsps:
-	    if hsp.expect < 0.3:
-		print "    name: ", alignment.title
-		print "        hsp subject: ", hsp.sbjct
-		print "        hsp expect: ", hsp.expect
+###########################################################
+# input: BLAST xml output
+# output: tsv-file
+# output-column 1: query sequence definition
+# output-column 2: hit sequence definition
+# output-column 3: query start
+# output-column 4: query end
+# output-column 5: hit start
+# output-column 6: hit end
+# output-column 7: reverse complement
+# output-column 8: e-value
+# output-column 9: bitscore
+# output-column 10: similarity
+###########################################################
 
 def blastresults2tabformat(outputfile):
     resultHandle = open(outputfile)
     blastRecords = NCBIXML.parse(resultHandle)
-    print "\t".join(["seqnr", "hitginr", "hitname", "evalue", "bitscore", "similarity", "score"])
+    print "\t".join(["query", "hit", "query-start", "query-end", "hit-start", "hit-end", "rev-comp", "e-value", "bitsore", "similarity"]) + "\n"
     for blastrecord in blastRecords:
+	query = blastrecord.query
 	if len(blastrecord.alignments) > 0:
-	    topalignment = blastrecord.alignments[0]
-	    topalGI, topalName = parseGIandNameFromDefLine(topalignment.title)
-	    tophit = topalignment.hsps[0]
-	    expect = str(tophit.expect)
-	    bits = str(tophit.bits)
-	    similarity = str(float(tophit.positives) / tophit.align_length)
-	    score = str(tophit.score)
-	else:
-	    topalGI = ""
-	    topalName = ""
-	    expect = ""
-	    bits = ""
-	    similarity = ""
-	    score = ""
-	print "\t".join([parseMetagenomeSeqNumber(blastrecord.query), topalGI, topalName, expect, bits, similarity, score])
+	    for alignment in blastrecord.alignments:
+		hit = alignment.title
+		for hsp in alignment.hsps:
+		    query_start = str(hsp.query_start)
+		    query_end= str(hsp.query_end)
+		    hit_start = str(hsp.sbjct_start)
+		    hit_end= str(hsp.sbjct_end)
+		    rev_comp = "dunnow"
+		    expect = str(hsp.expect)
+		    bits = str(hsp.bits)
+		    similarity = str(float(hsp.positives) / hsp.align_length)
+		    print "\t".join([query, hit, query_start, query_end, hit_start, hit_end, rev_comp, expect, bits, similarity]) + "\n"
 
 def main():
     blastresultsfile = sys.argv[1]
