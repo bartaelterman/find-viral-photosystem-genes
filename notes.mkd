@@ -2,6 +2,11 @@
 
 Personal notes taken while developing this project. Notes are organized latest-first.
 
+## 2013-04-03
+
+- After some debugging, I managed to fetch the scaffold containing *psaA* and *nrdB*. I visualized the hits by creating an svg (used some command-line raphael-js hacking to do so) and optimized the figure in inkscape. Ready to publish a new blogpost.
+- Should update this repository to make this `results/04-GS034-only` the main repo. Otherwise, people visiting the repo will be confused by the root Makefile.
+
 ## 2013-03-27
 
 - I added a folder `results/04-GS034-only`. I added a Makefile there to fetch only GS034 scaffolds and look for *psaA* and *nrdB*. As described in figure 2 of the paper, this should at least result in 1 scaffold.
